@@ -1,0 +1,54 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  
+  <title>The HTML5 Herald</title>
+  <meta name="description" content="The HTML5 Herald">
+  <meta name="author" content="SitePoint">
+  
+  <link rel="stylesheet" href="css/styles.css?v=1.0">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <!-- MODAL in js-->
+  
+
+  <section>
+  <section class="outer-container">
+    <div class="input-section">
+      <h2>Please dear User, add a new task:</h2>
+      <form action="#">
+        <div class="input-field-container">
+          
+          <input type="text" placeholder="New Task" class="input-field" name="task" id="task">
+        </div>
+        <input type="submit" class="input-btn" value="ADD TO LIST">
+        
+      </form>
+    </div>
+
+    <div class="list-section">
+      <h2>Tasks:</h2>
+      <div class="input-field-container filter-tasks">
+        <span class="filter-label">Filter:</span>  
+        <input type="text" placeholder="Filter tasks by content >>>>>" class="input-field filter-field" name="task" >
+      </div>
+      <ul class="task-list">
+            <!-- dynamically added with js-->
+        
+        
+        
+      </ul>
+      <button class="clear-btn input-btn">CLEAR ALL</button>
+    </div>
+  </section>
+</section>
+
+  <script src="js/scripts.js"></script>
+</body>
+</html>
