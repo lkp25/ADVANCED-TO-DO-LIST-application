@@ -192,11 +192,14 @@ color:blanchedalmond;
 .modal-window{
     display: grid;
     gap: 0.5rem;
-    max-width: 20rem;
-    place-self: center;
+    max-width: 35rem;
+    max-height: 10rem;
+    justify-self: center;
     background-color: rgba(39, 37, 37, 0.938);
     border-radius: 8px;
-  
+    position: relative;
+    top: 5.5rem;
+    margin:1.5rem;
 }
 .modal-title-bar{
     display: grid;
