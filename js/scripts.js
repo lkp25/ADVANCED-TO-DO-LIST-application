@@ -1,5 +1,6 @@
+//=========================================================================================
 //---------remove single item-------------------------------------------
-
+//=========================================================================================
 const list = document.querySelector('.task-list')
 
 list.addEventListener('click', removeItem)
@@ -7,11 +8,44 @@ list.addEventListener('click', removeItem)
 function removeItem(e) {
     if(e.target.classList.contains('remove-icon')) {
         e.target.parentElement.remove()
-    }}
-   
+        //remove from LS as well!
+        //for some STRANGE REASON there was WHITE-SPACE inserted before he text content, 
+        //so it had to be trimmed - otherwise it would not === task
+        removeTaskFromLS(e.target.parentElement.textContent.trim())
+    }
 
+    function removeTaskFromLS(singleTask){
+        
+        console.log(singleTask);
+        tasks = JSON.parse(localStorage.getItem('tasks'))
+        
+        
+        tasks.forEach((task, index) => {
+            console.log(task);
+            if(singleTask === task){
+                tasks.splice(index, 1)
+            }
+        })
+        //iterate the tasks-array, if the singleTask(e.target,parentElement) 
+        //has the same text content as the currently iterated task in array,
+        //perform splice on it using its index (cut out just this one)
+        
+
+
+        //and in the end send the rest of the tasks back to the LS:
+        localStorage.setItem('tasks', JSON.stringify(tasks))
+    }
+}
+
+
+
+
+
+
+
+//=========================================================================================
 //---------ADD NEW ITEM TO LIST-------------------------------------------
-
+//=========================================================================================
 const addBtn = document.querySelector('.input-btn')
 const inputField = document.querySelector('.input-field')
 
@@ -49,16 +83,57 @@ function addNewItem(e) {
         newItem.innerHTML = ` ${inputField.value}
         <a class="remove-icon"><svg  class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm121.6 313.1c4.7 4.7 4.7 12.3 0 17L338 377.6c-4.7 4.7-12.3 4.7-17 0L256 312l-65.1 65.6c-4.7 4.7-12.3 4.7-17 0L134.4 338c-4.7-4.7-4.7-12.3 0-17l65.6-65-65.6-65.1c-4.7-4.7-4.7-12.3 0-17l39.6-39.6c4.7-4.7 12.3-4.7 17 0l65 65.7 65.1-65.6c4.7-4.7 12.3-4.7 17 0l39.6 39.6c4.7 4.7 4.7 12.3 0 17L312 256l65.6 65.1z"/></svg></a>`
         list.appendChild(newItem)
+        
+
+        //-------add to local storage as well and take from it---------------
+        storeTaskInLocalStorage(inputField.value)
     }
+    }       
+}
+document.addEventListener('DOMContentLoaded', getTasksFromLocalStorage)
+
+function storeTaskInLocalStorage(task){
+    let tasks
+    if(localStorage.getItem('tasks') === null){
+        tasks = []
     }
-    
-    
-    
+    else{
+        tasks = JSON.parse(localStorage.getItem('tasks'))
+    }
+    tasks.push(task)
+
+    localStorage.setItem('tasks', JSON.stringify(tasks))
+}
+function getTasksFromLocalStorage() {
+    let tasks
+    if(localStorage.getItem('tasks') === null){
+        tasks = []
+    }
+    else{
+        tasks = JSON.parse(localStorage.getItem('tasks'))
+    }
+    tasks.forEach((task) => {
+        let newItem = document.createElement('li')
+        newItem.className = 'single-task'
+        newItem.innerHTML = ` ${task}
+        <a class="remove-icon"><svg  class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm121.6 313.1c4.7 4.7 4.7 12.3 0 17L338 377.6c-4.7 4.7-12.3 4.7-17 0L256 312l-65.1 65.6c-4.7 4.7-12.3 4.7-17 0L134.4 338c-4.7-4.7-4.7-12.3 0-17l65.6-65-65.6-65.1c-4.7-4.7-4.7-12.3 0-17l39.6-39.6c4.7-4.7 12.3-4.7 17 0l65 65.7 65.1-65.6c4.7-4.7 12.3-4.7 17 0l39.6 39.6c4.7 4.7 4.7 12.3 0 17L312 256l65.6 65.1z"/></svg></a>`
+        list.appendChild(newItem)
+
+    })
 }
 
 
+
+
+
+
+
+
+//=========================================================================================
 // -----------clear button------------------------------------------------
+//=========================================================================================
 document.querySelector('.clear-btn').addEventListener('click', clearAll)
+
 
 function clearAll() {
     //let listItems = document.querySelectorAll('.single-task')
@@ -68,16 +143,30 @@ function clearAll() {
     //     }
     
     // }
-    //faster way to clear all -while there is true for first child on the list - remove it
+    //faster way to clear all -while there is 'true' for first child on the list - keep removing it
     const taskList = document.querySelector('.task-list')
     while(taskList.firstChild){
         taskList.firstChild.remove()
         
     }
+    //remove all from LS as well:
+    localStorage.clear()
     }
     
+
     
+
+
+
+
+
+
+
+
+//=========================================================================================
 //--------------modal-----------------------------
+//=========================================================================================
+
 // const modal = document.querySelector('.modal-overlay')
 
 // document.addEventListener('click', closeModal)
@@ -88,7 +177,18 @@ function clearAll() {
 //     }
 // }
 
-//---------------------------------------------filter tasks------------------
+
+
+
+
+
+
+
+
+
+//=========================================================================================
+//---------------------------------------------filter tasks--------------------------------
+//=========================================================================================
 const filter = document.querySelector('.filter-field')
 filter.addEventListener('keyup', filterTasks)
 
@@ -117,7 +217,9 @@ function filterTasks(e){
 
 
 
-//--------------------------GLOBAAL MODAL--------------------------
+//=========================================================================================
+//--------------------------GLOBAAL MODAL---------------------------------------------
+//=========================================================================================
 const modalWindow = {
     init() {
         document.addEventListener('click', (e) => {
