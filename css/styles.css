@@ -11,6 +11,7 @@
 }
 h2{
     font-family: 'Indie Flower', cursive;
+    color: rgb(76, 0, 109);
 }
 
 .outer-container{
@@ -21,10 +22,11 @@ h2{
     top: 2rem;
     box-shadow: var(--box-shad);
     border-radius: 7px;
+    border: 1px solid darkviolet;
 }
 .input-section{
     padding: 2rem;
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid darkviolet;
 }
 
 .input-field{
@@ -38,7 +40,7 @@ h2{
     border-radius: 7px;
     transition: var(--transition);
     box-shadow: var(--box-shad);
-    
+    border: 1px solid darkviolet;
 }
 .input-field:focus{
     background-color: rgba(50, 205, 58, 0.26);
@@ -61,7 +63,7 @@ h2{
 }
 .input-btn{
     background-color: rgba(4, 107, 4, 0.856);
-    border: 2px solid darkmagenta;
+    border: 2px solid rgb(76, 0, 109);
     
     padding: 0.5rem 1rem;
     border-radius: 5px;
@@ -92,7 +94,7 @@ h2{
     place-items: center;
     height: 32px;
     border-radius: 7px;
-    
+    box-shadow: var(--box-shad);
 }
 .filter-label{
     padding-left: 0.5rem;
@@ -167,7 +169,7 @@ color:blanchedalmond;
 .clear-btn{
     justify-self: end;
     background-color: rgb(177, 11, 33);
-    border: 2px solid rgb(135, 5, 168);
+    border: 2px solid rgb(76, 0, 109);
     
    }
 
