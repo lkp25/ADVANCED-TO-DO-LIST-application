@@ -184,7 +184,18 @@ color:blanchedalmond;
     z-index: 999;
     margin: 0;
     display: grid;
-    transition: var(--transition);
+    /*needed for beutiful animation on open and close*/
+    transition: transform 1.5s ease, opacity 2s ease, clip-path 2.5s;
+    opacity: 0;
+    transform: rotateZ(0deg) scale(0.7);
+    clip-path: circle(5%);
+    transform-origin: 25% 25%;
+}
+/*class toggled on open-close (with set timeout)*/
+.modal-animation{
+    opacity:1;
+    transform: rotateZ(360deg) scale(1);
+    clip-path: circle(75%);
 }
 .modal-on{
     display: grid;
@@ -230,9 +241,5 @@ background: linear-gradient(24deg, rgba(60,49,49,1) 0%, rgba(65,11,11,1) 100%);
 .modal-close:hover{
     background-color: rgb(163, 15, 15);
     cursor: pointer;
-    
-}
-.modal-close:active{
-    transform: scale(1);
-    
+    transform: scale(1.6) rotateZ(360deg);
 }

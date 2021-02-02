@@ -9,7 +9,7 @@ function removeItem(e) {
     if(e.target.classList.contains('remove-icon')) {
         e.target.parentElement.remove()
         //remove from LS as well!
-        //for some STRANGE REASON there was WHITE-SPACE inserted before he text content, 
+        //for some STRANGE REASON there was WHITE-SPACE inserted before the text content, 
         //so it had to be trimmed - otherwise it would not === task
         removeTaskFromLS(e.target.parentElement.textContent.trim())
     }
@@ -225,7 +225,12 @@ const modalWindow = {
         document.addEventListener('click', (e) => {
             if(e.target.classList.contains('modal-close')) {
                 const modalOverlay = document.querySelector('.modal-overlay')
-                modalOverlay.remove()
+                //animate the modal closing
+                modalOverlay.classList.remove('modal-animation')
+                setTimeout(() => {
+                    modalOverlay.remove()
+                },2500)
+                // 
             }
         })
     },
@@ -253,6 +258,12 @@ const modalWindow = {
         },modalOptions)
         const modalTemplate = this.getHTMLTemplate(modalOptions)
         document.body.insertAdjacentHTML('afterbegin', modalTemplate)
+        //brilliant way to animate the opening of modal - add a class after just 10ms
+        setTimeout(() => {
+            const animodal = document.querySelector('.modal-overlay')
+            animodal.classList.add('modal-animation')
+        },10)
+        
     }
 }
 
