@@ -150,7 +150,7 @@ function clearAll() {
         
     }
     //remove all from LS as well:
-    localStorage.clear()
+    localStorage.removeItem('tasks')
     }
     
 
