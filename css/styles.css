@@ -13,7 +13,9 @@ h2{
     font-family: 'Indie Flower', cursive;
     color: rgb(76, 0, 109);
 }
-
+.body{
+    width: 80vw;
+}
 .outer-container{
     background: linear-gradient(0deg, rgba(190,184,184,1) 0%, rgba(191,178,134,0.9976365546218487) 6%, rgba(175,164,128,1) 48%, rgba(190,184,184,1) 86%);    width: 80vw;
     min-height: 60vh;
@@ -179,7 +181,7 @@ color:blanchedalmond;
 .modal-overlay{
     position: absolute;
     width: 100vw;
-    min-height: 800px;
+    min-height: 100vh;
     background-color: rgba(0, 0, 0, 0.692);
     z-index: 999;
     margin: 0;
@@ -196,6 +198,7 @@ color:blanchedalmond;
     opacity:1;
     transform: rotateZ(360deg) scale(1);
     clip-path: circle(75%);
+    
 }
 .modal-on{
     display: grid;
@@ -241,5 +244,5 @@ background: linear-gradient(24deg, rgba(60,49,49,1) 0%, rgba(65,11,11,1) 100%);
 .modal-close:hover{
     background-color: rgb(163, 15, 15);
     cursor: pointer;
-    transform: scale(1.6) rotateZ(360deg);
+    transform: scale(1.6) rotateZ(90deg);
 }

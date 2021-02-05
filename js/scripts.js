@@ -60,7 +60,7 @@ function addNewItem(e) {
     //no submit action(page reload)
     e.preventDefault()
 
-    if(containerHeight > 700 && containerHeight < 750) {
+    if(containerHeight > 1000 && containerHeight < 1050) {
         
         //modal.classList.add('modal-on')  - po staremu, statycznie
         modalWindow.openModal(modalOptions = {
@@ -224,6 +224,10 @@ const modalWindow = {
     init() {
         document.addEventListener('click', (e) => {
             if(e.target.classList.contains('modal-close')) {
+                //enable back the scrolling on body
+                document.body.style.overflow = 'auto'
+                document.body.style.height = 'auto'
+                
                 const modalOverlay = document.querySelector('.modal-overlay')
                 //animate the modal closing
                 modalOverlay.classList.remove('modal-animation')
@@ -252,6 +256,10 @@ const modalWindow = {
         `
     },
     openModal(modalOptions = {}){
+        //disable scrolling on modal open
+        document.body.style.overflow = 'hidden'
+        document.body.style.height = '95vh'
+        
         modalOptions = Object.assign({
             title:`modal title`,
             content:`modal content` 
