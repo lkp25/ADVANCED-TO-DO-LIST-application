@@ -1,25 +1,24 @@
 # TO-DO-LIST
 
 My first vanilla JS project.
-Design and applied styles are my own idea. 
+Design and all applied styles are my own idea. 
+It may sound trivial but this to-do list is quite advanced actually (as far as to-do lists are concerned :) ). 
 
-What's unique is customizable modal window JS snippet, used twice in this project 
-to display 2 different alerts (when user tries to add empty task and when there are too many tasks 
+
+Functionality:
+- adding single tasks (only limited number is allowed, a modal message will show if exceeded)
+- deleting single tasks with corresponding icon or all with one button
+- filtering of existing tasks using 'search field' - updates with every keydown event and displays only tasks matching search string
+- animated, customizable modal window JS-object used twice in this project to display 2 different alerts (when user tries to add "empty task" and when there are too many tasks 
 on the list)
+- all the items are stored in local storage, so they are not gone when page reloads.
 
-Close icon in the modal is created using material.io CDN,
-but delete-item icon for each task is added using pure SVG - and this caused trouble with the click event,
-as SVG is a parent to <path>, so the target based on-click functionality did not work properly(when the icon was
-    clicked, the target was either the path OR the svg itself, depending on exact position of event) without
-setting pointer-events: none; for the SVG.
+External resources used:
+- working with SVG file icon downloaded from FontAwesome (for deleting single task from list) and external CDN - materialize.io icon (for closing the modal window) - to practice different click-event targets
+- using Google-Fonts for handwriting-like font
 
-filtering of list items using 'search field' is also a nice bonus here.
 
-All the items are stored in / removed from local storage, so they are not gone when page reloads.
 
-//update 1: added a juicy animation for modal opening and closure
 
-//update 2: quick fix, changed the method for clear all button - 
-used to be localStorage.clear()
-so it erased all the keys, even from other web apps. Now it's set to 
-localStorage.removeItem('tasks')
+
+
