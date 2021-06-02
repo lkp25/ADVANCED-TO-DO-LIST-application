@@ -1,4 +1,7 @@
 # TO-DO-LIST
+published at https://lkp25.github.io/ADVANCED-TO-DO-LIST-application/
+
+
 
 My first vanilla JS project.
 Design and all applied styles are my own idea. 
