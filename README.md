@@ -7,6 +7,7 @@ My first vanilla JS project.
 Design and all applied styles are my own idea. 
 It may sound trivial but this to-do list is quite advanced actually (as far as to-do lists are concerned :) ). 
 
+![todoscreenshot](https://user-images.githubusercontent.com/76160924/120523385-1ce32d00-c3d6-11eb-8578-3a8ef964ebe3.png)
 
 Functionality:
 - adding single tasks (only limited number is allowed, a modal message will show if exceeded)
